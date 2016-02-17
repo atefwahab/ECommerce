@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import model.DbConnector;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * @author Atef.
  * Servlet implementation class Controller
  */
 @WebServlet("/Controller")
@@ -26,8 +28,8 @@ public class Controller extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		DbConnector dbConnector=new DbConnector();
+		dbConnector.selectAll();
 	}
 
 	/**
