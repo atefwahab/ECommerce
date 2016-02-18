@@ -61,7 +61,7 @@ public class DbConnector {
 			while(resultSet.next()){
 				for(int i=0;i<resultSet.getMetaData().getColumnCount();i++){
 						
-					System.out.println(resultSet.getString(i));
+					System.out.println(resultSet.getString(i+1));
 				}
 				
 			}
