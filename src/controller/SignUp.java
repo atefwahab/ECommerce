@@ -9,21 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.jasper.tagplugins.jstl.core.Redirect;
-
-import model.*;
+import model.DbConnector;
 
 /**
- * Servlet implementation class Controller
+ * Servlet implementation class SignUp
  */
-@WebServlet("/Controller")
-public class Controller extends HttpServlet {
+@WebServlet("/SignUp")
+public class SignUp extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Controller() {
+    public SignUp() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,8 +31,22 @@ public class Controller extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
-	
+		response.setContentType("text/html");
+		PrintWriter out=response.getWriter();
+		out.println("controller");
+		String name=request.getParameter("name");
+		String date=request.getParameter("date");
+		String pass=request.getParameter("pass");
+		String job=request.getParameter("job");
+		String e_mail=request.getParameter("e_mail");
+		String credit_Limit=request.getParameter("credit_Limit");
+		String address=request.getParameter("address");
+		String interest=request.getParameter("interest");
+		
+		DbConnector obj=new DbConnector();
+		obj.insertInDB(name,date,pass,job,e_mail,credit_Limit,address,interest);
+		
+		response.sendRedirect("index.jsp");
 	}
 
 	/**

@@ -1,29 +1,24 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.jasper.tagplugins.jstl.core.Redirect;
-
-import model.*;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class Controller
+ * Servlet implementation class GoCategory
  */
-@WebServlet("/Controller")
-public class Controller extends HttpServlet {
+@WebServlet("/GoCategory")
+public class GoCategory extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Controller() {
+    public GoCategory() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,8 +28,16 @@ public class Controller extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
-	
+		HttpSession session=request.getSession();
+			System.out.println(session.getAttribute("attr"));
+		if (session.getAttribute("attr").equals("mobiles")) {
+		     response.sendRedirect("mobile.jsp");
+		     
+        } else if (session.getAttribute("attr") .equals("laptop")) {
+           response.sendRedirect("laptop.html");
+        }
+		
+		
 	}
 
 	/**
