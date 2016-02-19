@@ -32,6 +32,13 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+	
+		/*
+		  author: donia
+		 get email and password from textfield then check from database using method 
+		 if true go to another page else stil in first page
+		 */
+		
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		out.println("controller");
@@ -43,10 +50,10 @@ public class Login extends HttpServlet {
 		
 		DbConnector obj=new DbConnector();
 		if(obj.chickLogin(pass,e_mail)){
-		response.sendRedirect("index.jsp");
+			response.sendRedirect("index.jsp");
 		}else
 		{
-			System.out.println("false");
+			response.sendRedirect("index.jsp");
 		}
 	}
 

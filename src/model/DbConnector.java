@@ -25,7 +25,11 @@ public class DbConnector {
 	        }catch(Exception e){e.printStackTrace();}    
 	}
 	
-	
+	/* 
+	  author: donia
+	  function get name of categories from DB
+	  return ArrayList
+	  */
 	public ArrayList<String> getCategories(){
 		
 		ArrayList<String> categories=new ArrayList<>();
@@ -52,7 +56,11 @@ public class DbConnector {
 	
 	
 	
-	
+	/* 
+	  author: donia
+	  function insert data of user in DB
+	  return nothing
+	  */
 
 
 	public void insertInDB(String name, String date, String pass, String job, String e_mail, String credit_Limit,
@@ -69,6 +77,11 @@ public class DbConnector {
 	}
 
 
+	/* 
+	  author: donia
+	  function check e_mail and password from DB to login
+	  return boolean
+	  */
 	public boolean chickLogin(String pass, String e_mail) {
 		// TODO Auto-generated method stub
 		boolean flag=false; 

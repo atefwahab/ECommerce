@@ -28,13 +28,23 @@ public class GoCategory extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		
+		/*
+		 author:donia
+		 check which link click to go to specific page
+		 */
 		HttpSession session=request.getSession();
-			System.out.println(session.getAttribute("attr"));
-		if (session.getAttribute("attr").equals("mobiles")) {
+			
+		if (request.getParameter("value").equals("mobiles")) {
 		     response.sendRedirect("mobile.jsp");
 		     
-        } else if (session.getAttribute("attr") .equals("laptop")) {
+        } else if (request.getParameter("value").equals("laptop")) {
            response.sendRedirect("laptop.html");
+        }else if (request.getParameter("value").equals("clothes")){
+        	response.sendRedirect("clothes.html");
+        }else if(request.getParameter("value").equals("shoes")){
+        	response.sendRedirect("shoes.html");
         }
 		
 		

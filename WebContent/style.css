@@ -464,3 +464,18 @@ h3 {
 	border: none;
 }
 /* end of footer */
+
+.total {
+    display: inline-block;
+    vertical-align: middle;
+    color: white;
+}
+
+.glyphicon-shopping-cart:before {
+    content: "\e116";
+}
+.simpleCart_empty:link, .simpleCart_empty:visited {
+    color: white;
+    text-decoration: none;
+    font-weight: normal;
+}

@@ -47,6 +47,16 @@ window.addEvents({
     <ul>
       <li><a href="#" class="current">Home</a></li>
     </ul>
+    <div class="header_right" style="float:right; padding-top:15px;font-weight: bold; font-size: 15px;">
+			<div class="cart box_1">
+				<a href="checkout.html">
+				<div class="total" style="color:white; font-size:15px;">
+					<span class="simpleCart_total">$00.0</span> (<span id="simpleCart_quantity" class="simpleCart_quantity">0</span> items)</div>
+					<i class="glyphicon" style="float:right;"> <img src="images/shopping_trolley.png" width="30px" height="30px"/></i></a>
+				<p><a href="javascript:;" class="simpleCart_empty" style="color:white; font-size:15px;">Empty Cart</a></p>
+				<div class="clearfix"> </div>
+			</div>				 
+		</div>
   </div>
   <!-- end of menu -->
 
@@ -79,6 +89,7 @@ window.addEvents({
         <a href="SignUp.jsp">Register</a><!-- go sign up page-->
 
         <input type="submit" name="login" value="Login" alt="Login" id="submit_btn" />
+        
       </form>
       <div class="cleaner"></div>
     </div>
@@ -99,8 +110,8 @@ window.addEvents({
     	  %>
     	   
     
-        <li><a href="GoCategory" name="<% out.println(allCategory.get(i));
-        %>" > <% out.println(allCategory.get(i));%></a></li>
+        <li><a href="GoCategory?value=<%out.println(allCategory.get(i));%>" name="<% out.println(allCategory.get(i));
+        %>"> <% out.println(allCategory.get(i));%></a></li>
         
       
       <% 
