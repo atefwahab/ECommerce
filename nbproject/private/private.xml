@@ -5,6 +5,8 @@
         <group>
             <file>file:/E:/ITI/Java%20Servelt/Servlet%20project/ECommerce-donia/src/controller/Controller.java</file>
             <file>file:/E:/ITI/Java%20Servelt/Servlet%20project/ECommerce-donia/src/model/DbConnector.java</file>
+            <file>file:/E:/ITI/Java%20Servelt/Servlet%20project/ECommerce-donia/src/dao/Product.java</file>
+            <file>file:/E:/ITI/Java%20Servelt/Servlet%20project/ECommerce-donia/src/controller/GoCategory.java</file>
             <file>file:/E:/ITI/Java%20Servelt/Servlet%20project/ECommerce-donia/WebContent/Product.jsp</file>
         </group>
     </open-files>
