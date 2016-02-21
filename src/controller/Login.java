@@ -8,22 +8,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-//import org.apache.jasper.tagplugins.jstl.core.Redirect;
-
-import model.*;
+import model.DbConnector;
 
 /**
- * Servlet implementation class Controller
+ * Servlet implementation class Login
  */
-@WebServlet("/Controller")
-public class Controller extends HttpServlet {
+@WebServlet("/Login")
+public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Controller() {
+    public Login() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,6 +32,29 @@ public class Controller extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+	
+		/*
+		  author: donia
+		 get email and password from textfield then check from database using method 
+		 if true go to another page else stil in first page
+		 */
+		
+		response.setContentType("text/html");
+		PrintWriter out=response.getWriter();
+		out.println("controller");
+		String pass=request.getParameter("pass");
+		String e_mail=request.getParameter("e_mail");
+		
+		HttpSession session=request.getSession(true);
+		session.setAttribute("e_emil", e_mail);
+		
+		DbConnector obj=new DbConnector();
+		if(obj.chickLogin(pass,e_mail)){
+			response.sendRedirect("index.jsp");
+		}else
+		{
+			response.sendRedirect("index.jsp");
+		}
 	}
 
 	/**
