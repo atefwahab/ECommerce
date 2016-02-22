@@ -6,7 +6,7 @@ body {
 	font-family: Georgia, "Times New Roman", Times, serif;
 	font-size: 12px;
 	color: #333;
-    background: #e1d1d6 url(images/body.png) repeat-x top;
+    background: #e1d1d6 url(../images/body.png) repeat-x top;
 }
 		
 a:link, a:visited { color: #dd0034; text-decoration: none; font-weight: normal; } 
@@ -43,7 +43,7 @@ img { margin: 0px; padding: 0px; border: none; }
 
 .button_01 a:hover {
 	color: #ffffff;
-	background: url(images/button_hover.png) no-repeat;
+	background: url(../images/button_hover.png) no-repeat;
 }
 
 h2 { 
@@ -52,7 +52,7 @@ h2 {
 	font-size: 24px;
 	font-weight: normal;
 	color: #271a23;
-	background: url(images/title_bg.jpg) bottom left no-repeat;
+	background: url(../images/title_bg.jpg) bottom left no-repeat;
 }
 
 h3 {
@@ -100,7 +100,7 @@ h3 {
 	color: #ffffff;	
 	font-weight: normal;
 	outline: none;	
-	background: url(images/menu_divider.png) center left no-repeat;
+	background: url(../images/menu_divider.png) center left no-repeat;
 }
 
 #menu ul li a span {
@@ -127,7 +127,7 @@ h3 {
 	height: 115px;
 	padding: 0 10px;
 	overflow: hidden;
-	background: url(images/header_right.png) right bottom no-repeat;
+	background: url(../images/header_right.png) right bottom no-repeat;
 }
 
 #header_bar  #header {
@@ -136,7 +136,7 @@ h3 {
 	padding: 0 30px;
 	margin-top: 20px;
 	overflow: hidden;
-	background: url(images/site_title_left.png) no-repeat top left;
+	background: url(../images/site_title_left.png) no-repeat top left;
 }
 
 #header_bar  #header .right {
@@ -145,7 +145,7 @@ h3 {
 	right: 0;
 	width: 25px;
 	height: 83px;
-	background: url(images/site_title_right.png);
+	background: url(../images/site_title_right.png);
 }
 
 #header_bar  #header h1 {
@@ -182,7 +182,7 @@ h3 {
 	height: 29px;
 	padding: 1px;
 	margin-top: 70px;
-	background: url(images/search_box.png);
+	background: url(../images/search_box.png);
 }
 
 #search_box form {
@@ -229,7 +229,7 @@ h3 {
 	width:  220px;
 	margin: 13px 0;
 	padding: 15px 22px 15px 24px;
-	background: url(images/sidebar_middle.png) repeat-y;
+	background: url(../images/sidebar_middle.png) repeat-y;
 }
 
 #sidebar .sidebar_top {
@@ -238,7 +238,7 @@ h3 {
 	height: 13px;
 	top: -13px;
 	left: 0;
-	background: url(images/sidebar_top.png) no-repeat;
+	background: url(../images/sidebar_top.png) no-repeat;
 }
 
 #sidebar .sidebar_bottom {
@@ -247,7 +247,7 @@ h3 {
 	height: 13px;
 	bottom: -13px;
 	left: 0;
-	background: url(images/sidebar_bottom.png) no-repeat;
+	background: url(../images/sidebar_bottom.png) no-repeat;
 }
 
 #sidebar .sidebar_section {
@@ -296,14 +296,14 @@ h3 {
 	vertical-align: bottom;
 	white-space: pre;
 	color: #a89ba5;
-	background: url(images/button.png) no-repeat;
+	background: url(../images/button.png) no-repeat;
 	border: none;
 	outline: none;
 }
 
 #submit_btn:hover {
 	color: #ffffff;
-	background: url(images/button_hover.png) no-repeat;
+	background: url(../images/button_hover.png) no-repeat;
 }
 
 #sidebar .sidebar_section .categories_list {
@@ -321,7 +321,7 @@ h3 {
 	display: block;
 	color: #201f1c;
 	padding: 5px 0 5px 20px;
-	background: url(images/list.png) center left no-repeat;
+	background: url(../images/list.png) center left no-repeat;
 }
 .categories_list li a:hover {
 	color: #dd0034;
@@ -356,7 +356,7 @@ h3 {
 #content {
 	float: right;
 	width: 670px;
-	background: url(images/slider_tr.png) top right no-repeat;
+	background: url(../images/slider_tr.png) top right no-repeat;
 }
 
 #content #latest_product_gallery {
@@ -428,7 +428,7 @@ h3 {
 #footer_wrapper {
 	clear: both;
 	width: 100%;
-	background: #5e4958 url(images/footer.png) top repeat-x;
+	background: #5e4958 url(../images/footer.png) top repeat-x;
 }
 
 #footer {

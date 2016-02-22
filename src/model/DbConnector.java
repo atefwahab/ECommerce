@@ -7,26 +7,29 @@ import java.util.ArrayList;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
+import dao.Product;
+import java.util.Vector;
+import util.DesEncrypter;
 
 public class DbConnector {
 
-	String url="jdbc:mysql://localhost:3306/";
+    String url="jdbc:mysql://localhost:3306/";
     String Driver="com.mysql.jdbc.Driver";
     String dbname="ecommerce";
     String username="root";
     String password="Ab1234567";
-    Connection con;
-    Statement st;
-    ResultSet rs;
+    Connection connection;
+    Statement statement;
+    ResultSet resultSet;
 	public DbConnector() {
 		 try{
 	            DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-	            con = (Connection) DriverManager.getConnection(url+dbname,username,password);
+	            connection = (Connection) DriverManager.getConnection(url+dbname,username,password);
 	        }catch(Exception e){e.printStackTrace();}    
 	}
 	
 	/* 
-	  author: donia
+	  @author: donia
 	  function get name of categories from DB
 	  return ArrayList
 	  */
@@ -36,11 +39,11 @@ public class DbConnector {
 		
 		String sql = "select * from categories";
 		  try {
-			st=(Statement) con.createStatement();
-			rs = st.executeQuery(sql);
+			statement=(Statement) connection.createStatement();
+			resultSet = statement.executeQuery(sql);
 			
-			while(rs.next()){
-				categories.add(rs.getString(2));
+			while(resultSet.next()){
+				categories.add(resultSet.getString(2));
 				
 			}
 			
@@ -52,6 +55,37 @@ public class DbConnector {
 		return categories;
 		
 	}
+        
+        
+        /* 
+	  @author: donia
+	  function get id of categories from DB
+	  return ArrayList
+	  */
+	public ArrayList<String> getIdOfCategories(){
+		
+		ArrayList<String> ids=new ArrayList<>();
+		
+		String sql = "select * from categories";
+		  try {
+			statement=(Statement) connection.createStatement();
+			resultSet = statement.executeQuery(sql);
+			
+			while(resultSet.next()){
+				ids.add(resultSet.getString(1));
+                                
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return ids;
+		
+	}
+        
 	
 	
 	
@@ -66,11 +100,15 @@ public class DbConnector {
 	public void insertInDB(String name, String date, String pass, String job, String e_mail, String credit_Limit,
 			String address, String interest) {
 		// TODO Auto-generated method stub
+                 DesEncrypter encrypter = new DesEncrypter();
+                 String passEncrypt=encrypter.encrypt(pass);
+                 
+                 
 		try {
-			st=(Statement) con.createStatement();
-			String sql = "INSERT INTO users(name,birthday,Password,job,email,credit_limit,address,interests) VALUES ('"+name+"','"+date+"','"+pass+"','"+job+"','"+e_mail+"','"+credit_Limit+"','"+address+"','"+interest+"')";	
-			st.executeUpdate(sql);
+			statement=(Statement) connection.createStatement();
+			String sql = "INSERT INTO users(name,birthday,Password,job,email,credit_limit,address,interests) VALUES ('"+name+"','"+date+"','"+passEncrypt+"','"+job+"','"+e_mail+"','"+credit_Limit+"','"+address+"','"+interest+"')";	
 			
+                        statement.executeUpdate(sql);
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			}
@@ -85,11 +123,14 @@ public class DbConnector {
 	public boolean chickLogin(String pass, String e_mail) {
 		// TODO Auto-generated method stub
 		boolean flag=false; 
-		String sql = "select * from users where email = '"+e_mail+"'and Password='"+pass+"'";
+                
+                DesEncrypter encrypter = new DesEncrypter();
+                String password=encrypter.encrypt(pass);
+		String sql = "select * from users where email = '"+e_mail+"'and Password='"+password+"'";
 		  try {
-			st=(Statement) con.createStatement();
-			rs = st.executeQuery(sql);
-			 flag= rs.next();
+			statement=(Statement) connection.createStatement();
+			resultSet = statement.executeQuery(sql);
+			 flag= resultSet.next();
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -99,8 +140,72 @@ public class DbConnector {
 		return flag;
 		
 	}
-		
+        
+        
+        /**
+         * this method used for get Vector of products
+         * @param categoryId an int represent the id of the category_id in db
+         * @author Atef.
+         * @return vector of products from that category
+         */
+        public Vector<Product> getProducts(int categoryId){
+            
+            Vector<Product> products = new Vector<>();
+            String query="SELECT * FROM `product` WHERE `category_id`="+categoryId;
+            System.out.println(query);
+            try {
+                statement=(Statement)connection.createStatement();
+                 resultSet=statement.executeQuery(query);
+                
+                // add products to vector
+                while(resultSet.next()){
+                    Product product = new Product();
+                    product.setId(resultSet.getInt("product_id"));
+                    product.setName(resultSet.getString("product_name"));
+                    product.setPrice(resultSet.getDouble("product_price"));
+                    product.setQuantity(resultSet.getInt("quantity"));
+                    product.setCategoryId(resultSet.getInt("category_id"));
+                    product.setDescription(resultSet.getString("product_description"));
+                    product.setImagePath(resultSet.getString("image_path"));
+                    
+                    products.addElement(product);
+                   
+               //end of while             
+                }
+                
+                resultSet.close();
+                statement.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            
+            return products;
+        }
+	/*
+        author:donia
+        check if exist user the same email register or not
+        */
 	
-	
+	public boolean checkDublicateUserInSignUp(String e_mail){
+            boolean flag=true;
+            {
+                try {
+                String query="SELECT * FROM `users` WHERE `email`='"+e_mail+"'";
+                 System.out.println(query);
+            
+                statement=(Statement)connection.createStatement();
+                 resultSet=statement.executeQuery(query);
+                
+                    
+                        // add products to vector
+                        flag= resultSet.next();
+                        System.out.println("inside chick dublicate "+flag);
+                        
+                } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                    }
+            return flag;
+        }
 	
 }

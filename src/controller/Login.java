@@ -41,7 +41,7 @@ public class Login extends HttpServlet {
 		
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
-		out.println("controller");
+		
 		String pass=request.getParameter("pass");
 		String e_mail=request.getParameter("e_mail");
 		
@@ -50,6 +50,7 @@ public class Login extends HttpServlet {
 		
 		DbConnector obj=new DbConnector();
 		if(obj.chickLogin(pass,e_mail)){
+                        session.setAttribute("attr", e_mail);
 			response.sendRedirect("index.jsp");
 		}else
 		{
