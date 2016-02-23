@@ -25,7 +25,7 @@
 <!-- start of menu-->
   <div id="menu">
     <ul>
-      <li><a href="#" class="current">Home</a></li>
+      <li><a href="index.jsp" class="current">Home</a></li>
     </ul>
   </div>
   <!-- end of menu -->
