@@ -7,13 +7,13 @@
 <title>SignUp</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="style.css" rel="stylesheet" type="text/css"/>
-<link href="SignUp.css" rel="stylesheet" type="text/css"/>
-<link rel="stylesheet" type="text/css" href="styles.css" />
+<link href="css/style.css" rel="stylesheet" type="text/css"/>
+<link href="css/SignUp.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="css/styles.css" />
 
-<script language="javascript" type="text/javascript" src="mootools-1.2.1-core.js"></script>
-<script language="javascript" type="text/javascript" src="mootools-1.2-more.js"></script>
-<script language="javascript" type="text/javascript" src="slideitmoo-1.1.js"></script>
+<script language="javascript" type="text/javascript" src="js/mootools-1.2.1-core.js"></script>
+<script language="javascript" type="text/javascript" src="js/mootools-1.2-more.js"></script>
+<script language="javascript" type="text/javascript" src="js/slideitmoo-1.1.js"></script>
 <script language="javascript" type="text/javascript">
 
 </script>
@@ -63,9 +63,10 @@
    <input type="text" name="e_mail" /><br><br><br>
    <input type="text" name="credit_Limit" /><br><br>
   <input type="text" name="address"/><br><br><br>
-  <input type="text" name="interest"><br><br><br>
+  <textarea name="interest" rows="5" cols="22"></textarea><br><br><br>
+  
   </div>
-  <input type="submit" value="submit" id="submit">
+  <input type="submit" value="Register" id="submit">
   
   </form>
   

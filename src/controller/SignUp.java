@@ -38,7 +38,6 @@ public class SignUp extends HttpServlet {
 		 */
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
-		out.println("controller");
 		String name=request.getParameter("name");
 		String date=request.getParameter("date");
 		String pass=request.getParameter("pass");
@@ -49,11 +48,13 @@ public class SignUp extends HttpServlet {
 		String interest=request.getParameter("interest");
 		
 		DbConnector obj=new DbConnector();
-		if( !name.equals("")&& !date.equals("") & !pass.equals("") & !job.equals("") & !e_mail.equals("") & !credit_Limit.equals("") & !address.equals("") & !interest.equals("")){
-
-		obj.insertInDB(name,date,pass,job,e_mail,credit_Limit,address,interest);
-		
-		response.sendRedirect("index.jsp");
+		if( !name.equals("")&& !date.equals("") & !pass.equals("") & !job.equals("") & !e_mail.equals("") & !credit_Limit.equals("") & !address.equals("") & !interest.equals("") & ! obj.checkDublicateUserInSignUp(e_mail)){
+                    
+                    
+                       
+                        obj.insertInDB(name,date,pass,job,e_mail,credit_Limit,address,interest);
+                        response.sendRedirect("index.jsp");
+                    
 		}else{
 			response.sendRedirect("SignUp.jsp");
 		}

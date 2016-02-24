@@ -9,19 +9,18 @@ import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 import dao.Product;
 import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import util.DesEncrypter;
 
 public class DbConnector {
 
-	String url="jdbc:mysql://localhost:3306/";
+    String url="jdbc:mysql://localhost:3306/";
     String Driver="com.mysql.jdbc.Driver";
     String dbname="ecommerce";
     String username="root";
-    String password="";
+    String password="Ab1234567";
     Connection connection;
     Statement statement;
-    ResultSet rs;
+    ResultSet resultSet;
 	public DbConnector() {
 		 try{
 	            DriverManager.registerDriver(new com.mysql.jdbc.Driver());
@@ -41,10 +40,10 @@ public class DbConnector {
 		String sql = "select * from categories";
 		  try {
 			statement=(Statement) connection.createStatement();
-			rs = statement.executeQuery(sql);
+			resultSet = statement.executeQuery(sql);
 			
-			while(rs.next()){
-				categories.add(rs.getString(2));
+			while(resultSet.next()){
+				categories.add(resultSet.getString(2));
 				
 			}
 			
@@ -56,6 +55,37 @@ public class DbConnector {
 		return categories;
 		
 	}
+        
+        
+        /* 
+	  @author: donia
+	  function get id of categories from DB
+	  return ArrayList
+	  */
+	public ArrayList<String> getIdOfCategories(){
+		
+		ArrayList<String> ids=new ArrayList<>();
+		
+		String sql = "select * from categories";
+		  try {
+			statement=(Statement) connection.createStatement();
+			resultSet = statement.executeQuery(sql);
+			
+			while(resultSet.next()){
+				ids.add(resultSet.getString(1));
+                                
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return ids;
+		
+	}
+        
 	
 	
 	
@@ -70,11 +100,15 @@ public class DbConnector {
 	public void insertInDB(String name, String date, String pass, String job, String e_mail, String credit_Limit,
 			String address, String interest) {
 		// TODO Auto-generated method stub
+                 DesEncrypter encrypter = new DesEncrypter();
+                 String passEncrypt=encrypter.encrypt(pass);
+                 
+                 
 		try {
 			statement=(Statement) connection.createStatement();
-			String sql = "INSERT INTO users(name,birthday,Password,job,email,credit_limit,address,interests) VALUES ('"+name+"','"+date+"','"+pass+"','"+job+"','"+e_mail+"','"+credit_Limit+"','"+address+"','"+interest+"')";	
-			statement.executeUpdate(sql);
+			String sql = "INSERT INTO users(name,birthday,Password,job,email,credit_limit,address,interests) VALUES ('"+name+"','"+date+"','"+passEncrypt+"','"+job+"','"+e_mail+"','"+credit_Limit+"','"+address+"','"+interest+"')";	
 			
+                        statement.executeUpdate(sql);
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			}
@@ -89,11 +123,14 @@ public class DbConnector {
 	public boolean chickLogin(String pass, String e_mail) {
 		// TODO Auto-generated method stub
 		boolean flag=false; 
-		String sql = "select * from users where email = '"+e_mail+"'and Password='"+pass+"'";
+                
+                DesEncrypter encrypter = new DesEncrypter();
+                String password=encrypter.encrypt(pass);
+		String sql = "select * from users where email = '"+e_mail+"'and Password='"+password+"'";
 		  try {
 			statement=(Statement) connection.createStatement();
-			rs = statement.executeQuery(sql);
-			 flag= rs.next();
+			resultSet = statement.executeQuery(sql);
+			 flag= resultSet.next();
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -118,25 +155,25 @@ public class DbConnector {
             System.out.println(query);
             try {
                 statement=(Statement)connection.createStatement();
-                 rs=statement.executeQuery(query);
+                 resultSet=statement.executeQuery(query);
                 
                 // add products to vector
-                while(rs.next()){
+                while(resultSet.next()){
                     Product product = new Product();
-                    product.setId(rs.getInt("product_id"));
-                    product.setName(rs.getString("product_name"));
-                    product.setPrice(rs.getDouble("product_price"));
-                    product.setQuantity(rs.getInt("quantity"));
-                    product.setCategoryId(rs.getInt("category_id"));
-                    product.setDescription(rs.getString("product_description"));
-                    product.setImagePath(rs.getString("image_path"));
+                    product.setId(resultSet.getInt("product_id"));
+                    product.setName(resultSet.getString("product_name"));
+                    product.setPrice(resultSet.getDouble("product_price"));
+                    product.setQuantity(resultSet.getInt("quantity"));
+                    product.setCategoryId(resultSet.getInt("category_id"));
+                    product.setDescription(resultSet.getString("product_description"));
+                    product.setImagePath(resultSet.getString("image_path"));
                     
                     products.addElement(product);
                    
                //end of while             
                 }
                 
-                rs.close();
+                resultSet.close();
                 statement.close();
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -144,8 +181,31 @@ public class DbConnector {
             
             return products;
         }
-		
+	/*
+        author:donia
+        check if exist user the same email register or not
+        */
 	
-	
+	public boolean checkDublicateUserInSignUp(String e_mail){
+            boolean flag=true;
+            {
+                try {
+                String query="SELECT * FROM `users` WHERE `email`='"+e_mail+"'";
+                 System.out.println(query);
+            
+                statement=(Statement)connection.createStatement();
+                 resultSet=statement.executeQuery(query);
+                
+                    
+                        // add products to vector
+                        flag= resultSet.next();
+                        System.out.println("inside chick dublicate "+flag);
+                        
+                } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                    }
+            return flag;
+        }
 	
 }

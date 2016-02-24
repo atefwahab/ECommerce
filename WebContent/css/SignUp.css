@@ -11,6 +11,11 @@ input{
 	font-size: 15px;
 }
 
+textarea{
+    background-color:#a89ba5; 
+	font-size: 15px;
+}
+
 #title{
 	float:left;
 }
