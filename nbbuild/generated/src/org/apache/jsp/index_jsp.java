@@ -50,8 +50,6 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
 
       out.write("\n");
       out.write("\n");
-      out.write("\n");
-      out.write("\n");
       out.write("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\n");
       out.write("<html>\n");
       out.write("<head>\n");
@@ -89,6 +87,9 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("});\n");
       out.write("</script>\n");
       out.write("</head>\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("<body>\n");
       out.write("<div id=\"wrapper\">\n");
       out.write("\n");
@@ -97,6 +98,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("  <div id=\"menu\">\n");
       out.write("    <ul>\n");
       out.write("      <li><a href=\"#\" class=\"current\">Home</a></li>\n");
+      out.write("      <li><a href=\"SignUp.jsp\">Register</a></li>\n");
       out.write("    </ul>\n");
       out.write("    <div class=\"header_right\" style=\"float:right; padding-top:15px;font-weight: bold; font-size: 15px;\">\n");
       out.write("\t\t\t<div class=\"cart box_1\">\n");
@@ -116,36 +118,29 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <div id=\"header\">\n");
       out.write("      <div class=\"right\"></div>\n");
       out.write("      <h1><a href=\"#\"> <img src=\"images/logo.png\" alt=\"\" /> <span>Online Store </span> </a></h1>\n");
+      out.write("      \n");
       out.write("    </div>\n");
-      out.write("    <div id=\"search_box\">\n");
-      out.write("      <form action=\"#\" method=\"get\">\n");
-      out.write("        <input type=\"text\" value=\"Enter keyword here...\" name=\"q\" size=\"10\" id=\"searchfield\" onfocus=\"clearText(this)\" onblur=\"clearText(this)\" />\n");
-      out.write("        <input type=\"submit\" name=\"Search\" value=\"\" alt=\"Search\" id=\"searchbutton\" />\n");
-      out.write("      </form>\n");
-      out.write("    </div>\n");
-      out.write("  </div>\n");
-      out.write("  <!-- end of header_bar -->\n");
-      out.write("  <div class=\"cleaner\"></div>\n");
-      out.write("  <div id=\"sidebar\">\n");
-      out.write("    <div class=\"sidebar_top\"></div>\n");
-      out.write("    <div class=\"sidebar_bottom\"></div>\n");
-      out.write("    <!-- left sidebar_section-->\n");
-      out.write("    <div class=\"sidebar_section\">\n");
-      out.write("     ");
+      out.write("      <div style=\"color: white; text-align: center; float: right\">\n");
+      out.write("          \n");
+      out.write("             ");
 
             
            
      if(request.getSession().getAttribute("attr")== null){
      
       out.write("\n");
-      out.write("                <h2>Members</h2>\n");
       out.write("      <form action=\"login.jsp\" method=\"get\">\n");
-      out.write("        <label>E-mail</label>\n");
-      out.write("        <input type=\"text\" value=\"\" name=\"e_mail\" size=\"10\" class=\"input_field\" />\n");
-      out.write("        <label>Password</label>\n");
-      out.write("        <input type=\"password\" value=\"\" name=\"pass\" class=\"input_field\" />\n");
-      out.write("        <a href=\"SignUp.jsp\">Register</a><!-- go sign up page-->\n");
-      out.write("\n");
+      out.write("         \n");
+      out.write("          <div style=\"float: right; margin-left:5px;\">\n");
+      out.write("        <label>Password</label><br>\n");
+      out.write("        <input type=\"password\" value=\"\" name=\"pass\" class=\"input_field\" style=\"color: white;\n");
+      out.write("               background: none; font-size: 12px;\" />\n");
+      out.write("          </div> <div style=\"float: right\">  \n");
+      out.write("              <label>E-mail</label> <br>\n");
+      out.write("        <input type=\"text\" value=\"\" name=\"e_mail\" size=\"10\" class=\"input_field\" style=\"color: white;\n");
+      out.write("               background: none; font-size: 12px;\" />\n");
+      out.write("          </div><br>\n");
+      out.write("        <!-- go sign up page-->\n");
       out.write("        <input type=\"submit\" name=\"login\" value=\"Login\" alt=\"Login\" id=\"submit_btn\" />\n");
       out.write("        \n");
       out.write("      </form>\n");
@@ -155,11 +150,11 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
     
       out.write("\n");
       out.write("      \n");
-      out.write("    <div><h1> welcome <h1><h4>");
+      out.write("    <div style=\"color: white; font-size: 20px\"><br> <span style=\"color:#FF0066\">welcome</span> ");
       out.print(request.getSession().getAttribute("attr"));
-      out.write("<h4></div>\n");
-      out.write("    <a href=\"LogOut\">LogOut</a><br>\n");
-      out.write("     <a href=\"#\">View Profile</a>\n");
+      out.write("</div><br>\n");
+      out.write("    <a href=\"LogOut\" style=\"background-color: darkgray; font-size: 15px\">LogOut</a>\n");
+      out.write("     <a href=\"ViewProfile.jsp\" style=\"background-color: darkgray; font-size: 15px\">View Profile</a>\n");
       out.write("                ");
 
     }
@@ -168,6 +163,27 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
         
         
       out.write("\n");
+      out.write("          \n");
+      out.write("      </div>\n");
+      out.write("    <div id=\"search_box\">\n");
+      out.write("        \n");
+      out.write("      <form action=\"#\" method=\"get\">\n");
+      out.write("        <input type=\"text\" value=\"Enter keyword here...\" name=\"q\" size=\"10\" id=\"searchfield\" onfocus=\"clearText(this)\" onblur=\"clearText(this)\" />\n");
+      out.write("        <input type=\"submit\" name=\"Search\" value=\"\" alt=\"Search\" id=\"searchbutton\" />\n");
+      out.write("      </form>\n");
+      out.write("    </div>\n");
+      out.write("  </div>\n");
+      out.write("  \n");
+      out.write("\n");
+      out.write("\n");
+      out.write("<!-- end of header_bar -->\n");
+      out.write("  <div class=\"cleaner\"></div>\n");
+      out.write("  <div id=\"sidebar\">\n");
+      out.write("    <div class=\"sidebar_top\"></div>\n");
+      out.write("    <div class=\"sidebar_bottom\"></div>\n");
+      out.write("    <!-- left sidebar_section-->\n");
+      out.write("    <div class=\"sidebar_section\">\n");
+      out.write("  \n");
       out.write("        \n");
       out.write("      <div class=\"cleaner\"></div>\n");
       out.write("    </div>\n");
@@ -251,14 +267,16 @@ out.println(allIds.get(i));
       out.write("      <p>Free CSS Templates are provided by TemplateMo.com for everyone. Feel free to use this template for your websites. Credit goes to <a href=\"#\">Free Photos</a> for photos used in this template. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et quam vitae ipsum vulputate varius vitae semper nunc. Quisque eget elit quis augue pharetra feugiat.</p>\n");
       out.write("    </div>\n");
       out.write("\n");
-      out.write("   \n");
+      out.write("    <br>\n");
+      out.write("        <br>\n");
+      out.write("    <br>\n");
+      out.write("\n");
+      out.write("            <br>\n");
+      out.write("\n");
       out.write("  </div>\n");
       out.write("  <!-- end of content -->\n");
       out.write("</div>\n");
       out.write("<!-- end of wrapper -->\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("<!--start footer-->\n");

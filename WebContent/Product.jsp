@@ -12,26 +12,54 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title><%= request.getParameter("value") %></title>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        
+            
         
          <%
                Vector<Product> products=(Vector<Product>)request.getAttribute("products"); 
             %>
     </head>
-    <body>
+    <%@include file="header.jsp" %>
+    
+    
+    
+    <!--products-->
+    <div class="content_section">
+      <h2>Our Products</h2>
+      
+    
+    <!--start of loop-->
         
         <%
             
             for(int i=0;i<products.size();i++){
                 
-                out.println("<h1>Product Name: "+products.elementAt(i).getName()+"</h1>");
-                out.println("<h1>Product description: "+products.elementAt(i).getDescription()+"</h1>");
-                out.println("<img src=\""+products.elementAt(i).getImagePath()+"\"/>");
-                out.println("<h1> Product Category: "+products.elementAt(i).getCategoryId()+"</h1>");
-                out.println("<h1> Product Id: "+products.elementAt(i).getId()+"</h1>");
-                out.println("<h1> Product Price: "+products.elementAt(i).getPrice()+"</h1>");
-                out.println("<h1> Product Quantity: "+products.elementAt(i).getQuantity()+"</h1>");
+                out.println("<form method=\"post\">");
+                
+                out.println("<div class=\"product_box margin_r35\">");
+                out.println("<h3>"+products.elementAt(i).getName()+"</h3>");
+                out.println("<div class=\"image_wrapper\"> <a><img class=\"productsImg\" src=\""+products.elementAt(i).getImagePath()+"\"  /></a> </div>");
+                out.println("<p class=\"price\">Price: "+products.elementAt(i).getPrice()+" LE</p>");
+                out.println("<a href=\"#\">Detail</a> | <button type=\"submit\">Buy Now</button> </div>");
+        
+                out.println("<input type=\"hidden\" name=\"productId\" value=\""+products.elementAt(i).getId()+"\"/>");
+                out.println("</form>");
+                
+                
+                
+//               
                 
             }
         %>
-    </body>
-</html>
+        
+          <div class="cleaner"></div>
+
+      <!--button view all-->
+      <!--<div class="button_01"><a href="#">View All</a></div>-->
+    
+    </div>
+  </div>
+  <script src="js/script.js"></script>
+        <%@include file="footer.jsp" %>

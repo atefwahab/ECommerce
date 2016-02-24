@@ -6,13 +6,14 @@
 
 
 <body>
+    <jsp:useBean id="obj" scope="session" class="model.DbConnector"></jsp:useBean>
 <div id="wrapper">
 
 
 <!-- start of menu-->
   <div id="menu">
     <ul>
-      <li><a href="#" class="current">Home</a></li>
+      <li><a href="index.jsp" class="current">Home</a></li>
       <li><a href="SignUp.jsp">Register</a></li>
     </ul>
     <div class="header_right" style="float:right; padding-top:15px;font-weight: bold; font-size: 15px;">
@@ -61,23 +62,15 @@
             }else{
     %>
       
-    <div style="color: white; font-size: 20px"><br> <span style="color:#FF0066">welcome</span> <%=request.getSession().getAttribute("attr")%></div><br>
+    <div style="color: white; font-size: 20px"><br> <span style="color:#FF0066">welcome</span> <%out.println(obj.getNameOfEmail((String)request.getSession().getAttribute("attr")));%></div><br>
     <a href="LogOut" style="background-color: darkgray; font-size: 15px">LogOut</a>
      <a href="ViewProfile.jsp" style="background-color: darkgray; font-size: 15px">View Profile</a>
                 <%
     }
 
-        
-        
-        %>
+     %>
           
       </div>
-    <div id="search_box">
-        
-      <form action="#" method="get">
-        <input type="text" value="Enter keyword here..." name="q" size="10" id="searchfield" onfocus="clearText(this)" onblur="clearText(this)" />
-        <input type="submit" name="Search" value="" alt="Search" id="searchbutton" />
-      </form>
-    </div>
+   
   </div>
   

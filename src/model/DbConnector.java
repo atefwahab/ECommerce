@@ -207,5 +207,85 @@ public class DbConnector {
                     }
             return flag;
         }
-	
+	/*
+        author:donia
+        function take email the return name of this email
+        */
+        
+        public String getNameOfEmail(String email){
+            String name="";
+            try {
+                String query="SELECT name FROM `users` WHERE `email`='"+email+"'";
+                 System.out.println(query);
+            
+                statement=(Statement)connection.createStatement();
+                 resultSet=statement.executeQuery(query);
+                
+                    
+                        // add products to vector
+                         if(resultSet.next())
+                             name=resultSet.getString("name");
+                        System.out.println("inside getname "+name);
+                        
+                } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+            return name;
+        }
+        
+        
+        /*
+        author:donia
+        get all data of user using email
+        */
+        
+       public Vector<String> getAllData(String email){
+            Vector <String> data=new Vector<>();
+            try {
+                String query="SELECT * FROM `users` WHERE `email`='"+email+"'";
+                 
+            
+                 statement=(Statement)connection.createStatement();
+                 resultSet=statement.executeQuery(query);
+                
+                    
+                        // add products to vector
+                         if(resultSet.next())
+                             data.add(resultSet.getString(2));
+                             data.add(resultSet.getString(3));
+                             data.add(resultSet.getString(4));
+                             data.add(resultSet.getString(5));
+                             data.add(resultSet.getString(6));
+                             data.add(resultSet.getString(7));
+                             data.add(resultSet.getString(8));
+                             data.add(resultSet.getString(9));
+                        
+                        
+                } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+            return data;
+        }
+
+       /*
+       author:donia
+       update profile data 
+       */
+    
+
+    public void UpdateProfile(String email, String birth, String pass, String job, String name, String credit, String address, String interest) {
+            
+        try {
+                           DesEncrypter encrypter = new DesEncrypter();
+                           String passEncrypt=encrypter.encrypt(pass);
+			statement=(Statement) connection.createStatement();
+                       
+			String sql = "update users set name='"+name+"', birthday='"+birth+"', Password='"+passEncrypt+"', job='"+job+"',credit_limit="+credit+",address='"+address+"',interests='"+interest+"' where email='"+email+"'"; 	
+			System.out.println(sql);
+                        statement.executeUpdate(sql);
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+        
+    }
 }

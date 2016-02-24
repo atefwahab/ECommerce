@@ -15,6 +15,7 @@ a:active, a:hover { color: #990099; text-decoration: underline; }
 p { margin: 0px; padding: 0px; }
 
 img { margin: 0px; padding: 0px; border: none; }
+.productsImg{    height: 220px; width: 190px;  }
 
 .cleaner { clear: both; width: 100%; height: 0px; font-size: 0px;  }
 .cleaner_h10 { clear: both; width:100%; height: 10px; }
@@ -478,4 +479,37 @@ h3 {
     color: white;
     text-decoration: none;
     font-weight: normal;
+}
+
+
+.title{
+    color:#FF0066;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.res{
+    color:white;
+    font-size: 17px;
+    
+}
+
+#Edit{
+    background-color: #686868;
+    color:white;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+
+#dataProfile{
+    background-color: #a89ba5 ;
+    border-radius:25px;
+    
 }
