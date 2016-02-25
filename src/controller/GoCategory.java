@@ -37,25 +37,7 @@ public class GoCategory extends HttpServlet {
 		// TODO Auto-generated method stub
 		
                 
-                
-		
-		/*
-		 @author:donia
-		 check which link click to go to specific page
-		 */
-		/*HttpSession session=request.getSession();
-			
-		if (request.getParameter("value").equals("mobiles")) {
-		     response.sendRedirect("mobile.jsp");
-		     
-        } else if (request.getParameter("value").equals("laptop")) {
-           response.sendRedirect("laptop.html");
-        }else if (request.getParameter("value").equals("clothes")){
-        	response.sendRedirect("clothes.html");
-        }else if(request.getParameter("value").equals("shoes")){
-        	response.sendRedirect("shoes.html");
-        }
-                */
+                int productId=Integer.parseInt(request.getParameter("value"));
                 RequestDispatcher dispatcher= request.getRequestDispatcher("Product.jsp");
                 
                 /**
@@ -63,21 +45,10 @@ public class GoCategory extends HttpServlet {
                  * @author atef
                  * this part of code is used to create a bean
                  */
-                Vector<Product> products=dbConnector.getProducts(1);
-                for(int i=0;i<products.size();i++){
-                    System.out.println("-------------------------------");
-                    System.out.print(products.elementAt(i).getName());
-                    System.out.print(products.elementAt(i).getDescription());
-                    System.out.print(products.elementAt(i).getPrice());
-                    System.out.print(products.elementAt(i).getQuantity());
-                    System.out.print(products.elementAt(i).getCategoryId());
-                    
-                }
-                
+                Vector<Product> products=dbConnector.getProducts(productId);
                 // add the vector of products to the request paramters 
                 request.setAttribute("products",products);
                 dispatcher.forward(request, response);
-                
                 
 		
 		
