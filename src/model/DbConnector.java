@@ -17,7 +17,7 @@ public class DbConnector {
     String Driver="com.mysql.jdbc.Driver";
     String dbname="ecommerce";
     String username="root";
-    String password="Ab1234567";
+    String password="";
     Connection connection;
     Statement statement;
     ResultSet resultSet;
