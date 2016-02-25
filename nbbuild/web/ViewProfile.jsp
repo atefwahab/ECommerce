@@ -42,7 +42,7 @@ src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js">
 <span class="title">Password:</span><label class="res" id="pass"><%=objenc.decrypt(vecData.get(2)) %></label><br><br>
 <span class="title">Job:</span><label class="res" id="job"><%=vecData.get(3) %></label><br><br>
 <span class="title">Name:</span><label class="res" id="name"><%out.println(objcon.getNameOfEmail((String)request.getSession().getAttribute("attr")));%></label><br><br>
-<span class="title">Credit Limit:</span><label class="res" id="credit"><%=vecData.get(5) %> </label>L.E<br><br>
+<span class="title">Credit Limit:</span><label class="res" id="credit"><%=vecData.get(5) %> </label><b>L.E</b><br><br>
 <span class="title">Address:</span><label class="res" id="address"><%=vecData.get(6) %></label><br><br>
 <span class="title">interest:</span><label class="res" id="interest"><%=vecData.get(7) %></label><br><br>
 <br>

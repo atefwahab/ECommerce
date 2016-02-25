@@ -16,7 +16,7 @@ $(document).ready(function(){
         address=$("#address").text();
         interst=$("#interest").text();
         
-        $('#birth').replaceWith( '<input id="inBirth" type="text" value="'+birthday+'" style="text-align:center; font-size:15px; background:none; color:white;"/>' );
+        $('#birth').replaceWith( '<input id="inBirth" type="text" value="'+birthday+'" style="text-align:center; font-size:15px; background:#705A6B; color:white;"/>' );
          $('#pass').replaceWith( '<input id="inPass" type="password" value="'+password+'" style="text-align:center; font-size:15px; background:none; color:white;"/>' );
           $('#job').replaceWith( '<input id="inJob" type="text" value="'+job+'" style="text-align:center; font-size:15px; background:none; color:white;"/>' );
            $('#name').replaceWith( '<input id="inName" type="text" value="'+name+'" style="text-align:center; font-size:15px; background:none; color:white;"/>' );
@@ -42,7 +42,7 @@ $(document).ready(function(){
        $("#inInt").replaceWith('<label class="res" id="interest">'+Interest+'</label>');
       
        $.get("ShowProfile?birth="+birth+"&pass="+Pass+"&job="+Job+"&name="+Name+"&credit="+Credit+"&address="+Add+"&interest="+Interest);
-            //    document.location.href='/ShowProfile';
+            
   
       
     }
